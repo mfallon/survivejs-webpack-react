@@ -1,0 +1,20 @@
+{
+  "name": "kanbanApp",
+  "version": "0.0.0",
+  "description": "A simple kanban app following survivejs_webpack_react.pdf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kanban",
+    "react",
+    "webpack"
+  ],
+  "author": "markfallondub@gmail.com",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "webpack": "~1.13.0",
+    "html-webpack-plugin": "~2.16.0"
+  }
+}
