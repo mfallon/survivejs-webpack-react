@@ -32,5 +32,16 @@ module.exports = {
     // Parse host/port from env
     host: process.env.HOST,
     port: process.env.PORT
+  },
+  module: {
+    loaders: [
+      {
+        // test expects regex - hence slashes
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+        // include accepts either a path or an array of paths
+        include: PATHS.app
+      }
+    ]
   }
 };

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "83a4677a9f18b8c0036d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3d51674beb37991b3399"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -583,6 +583,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var css = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../main.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	var component = __webpack_require__(1);
 	var app = document.createElement('div');
 	document.body.appendChild(app);
