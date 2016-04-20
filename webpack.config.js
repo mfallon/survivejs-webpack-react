@@ -1,13 +1,17 @@
+require('es6-promise').polyfill();
+
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
+var merge = require('webpack-merge');
 
+const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build')
 };
 
-module.exports = {
+var common = {
   // Entry accpts a path or object of entries
   entry: PATHS.app,
   output: {
@@ -17,22 +21,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Kanban app'
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ],
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    progress: true,
-
-    // Display only errors
-    stats: 'errors-only',
-
-    // Parse host/port from env
-    host: process.env.HOST,
-    port: process.env.PORT
-  },
   module: {
     loaders: [
       {
@@ -45,3 +35,25 @@ module.exports = {
     ]
   }
 };
+
+if(TARGET === 'start' || !TARGET) {
+  module.exports = merge(common, {
+    devtool: 'eval-source-map',
+    devServer: {
+      historyApiFallback: true,
+      hot: true,
+      inline: true,
+      progress: true,
+
+      // Display only errors
+      stats: 'errors-only',
+
+      // Parse host/port from env
+      host: process.env.HOST,
+      port: process.env.PORT
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  });
+}
